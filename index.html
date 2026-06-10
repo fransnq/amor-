@@ -1,1 +1,975 @@
-h2
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversario, Mi Amor ❤️</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           1. VARIABLES Y CONFIGURACIÓN GENERAL
+           ========================================================================== */
+        :root {
+            --rosa-suave: #ffe5ec;
+            --rosa-medio: #ffb3c6;
+            --rosa-intenso: #ff85a1;
+            --rojo-elegante: #c9184a;
+            --rojo-oscuro: #800f2f;
+            --dorado: #d4af37;
+            --dorado-brillo: #f3e5ab;
+            --blanco-glass: rgba(255, 255, 255, 0.45);
+            --blanco-puro: #ffffff;
+            --texto-oscuro: #2b2d42;
+            --sombra-suave: 0 8px 32px 0 rgba(235, 131, 155, 0.2);
+            --borde-glass: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #fff0f3 0%, #ffe5ec 50%, #ffccd5 100%);
+            color: var(--texto-oscuro);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        h1, h2, h3, .fuente-romantica {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .titular-seccion {
+            text-align: center;
+            font-size: 2.8rem;
+            color: var(--rojo-elegante);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .titular-seccion::after {
+            content: '❤️';
+            display: block;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            color: var(--rosa-intenso);
+        }
+
+        /* Contenedor Efecto Cristal (Glassmorphism) */
+        .glass-panel {
+            background: var(--blanco-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: var(--borde-glass);
+            border-radius: 24px;
+            box-shadow: var(--sombra-suave);
+        }
+
+        /* ==========================================================================
+           2. EFECTOS ESPECIALES (PARTÍCULAS Y FLOTANTES)
+           ========================================================================== */
+        #capa-particulas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .particula {
+            position: absolute;
+            pointer-events: none;
+            animation: caer linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes caer {
+            0% {
+                transform: translateY(-5vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% {
+                transform: translateY(105vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Botón de Música Flotante */
+        .control-musica {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            background: var(--rojo-elegante);
+            color: white;
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        .control-musica:hover {
+            transform: scale(1.1);
+            background: var(--rojo-oscuro);
+        }
+
+        /* Confeti */
+        .confeti {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            pointer-events: none;
+            animation: estallido 1s ease-out forwards;
+            z-index: 1001;
+        }
+
+        @keyframes estallido {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+        }
+
+        /* ==========================================================================
+           3. SECCIONES ESPECÍFICAS
+           ========================================================================== */
+        
+        /* --- 1. BIENVENIDA (HERO) --- */
+        #bienvenida {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background-image: url("img/portatil-con-rosas-rojas.jpg");
+                background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+        }
+
+        .bg-bienvenida {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(128, 15, 47, 0.4), rgba(0, 0, 0, 0.3)), 
+                        url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1920') no-repeat center center/cover;
+            transform: scale(1.05);
+            animation: zoomBg 20s infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes zoomBg { 0% { transform: scale(1.05); } 100% { transform: scale(1.15); } }
+
+        .contenido-bienvenida {
+            padding: 3rem;
+            max-width: 800px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .contenido-bienvenida h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Great Vibes', cursive;
+            color: var(--rosa-suave);
+        }
+
+        .contenido-bienvenida p {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        .btn-romantico {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--rojo-elegante), var(--rosa-intenso));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 20px rgba(201, 24, 74, 0.4);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-romantico:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(201, 24, 74, 0.6);
+            border-color: var(--dorado);
+        }
+
+        /* --- 2. NUESTRA HISTORIA (TIMELINE) --- */
+        #historia { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        
+        .linea-tiempo {
+            position: relative;
+            margin: 40px 0;
+        }
+        .linea-tiempo::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: var(--rosa-medio);
+            transform: translateX(-50%);
+        }
+
+        .h-evento {
+            width: 50%;
+            padding: 20px 40px;
+            position: relative;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .h-evento.visible { opacity: 1; transform: translateY(0); }
+
+        .h-evento.izquierda { left: 0; text-align: right; }
+        .h-evento.derecha { left: 50%; text-align: left; }
+
+        .h-evento::after {
+            content: '💖';
+            position: absolute;
+            right: -16px;
+            top: 25px;
+            background: var(--blanco-puro);
+            border-radius: 50%;
+            padding: 5px;
+            font-size: 1.2rem;
+            z-index: 5;
+        }
+        .h-evento.derecha::after { left: -16px; }
+
+        .h-contenido {
+            padding: 25px;
+            position: relative;
+        }
+        .h-contenido i {
+            font-size: 2rem;
+            color: var(--rojo-elegante);
+            margin-bottom: 15px;
+        }
+        .h-contenido img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-top: 15px;
+            border: var(--borde-glass);
+        }
+
+        /* --- 3. GALERÍA DE FOTOS (MASONRY MODERNO) --- */
+        #galeria { padding: 80px 20px; max-width: 1300px; margin: 0 auto; }
+        
+        .malla-masonry {
+            columns: 4 280px;
+            column-gap: 20px;
+        }
+        .item-galeria {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: var(--sombra-suave);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .item-galeria img {
+            width: 100%;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .item-galeria:hover {
+            transform: scale(1.03) translateY(-5px);
+        }
+        .item-galeria:hover img {
+            transform: scale(1.08);
+        }
+        .capa-hover {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(transparent, rgba(128, 15, 47, 0.7));
+            opacity: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 20px;
+            transition: opacity 0.4s ease;
+        }
+        .item-galeria:hover .capa-hover { opacity: 1; }
+        .capa-hover span { color: white; font-weight: 600; font-size: 1.1rem; }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top:0; left:0; width:100vw; height:100vh;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .lightbox.activo { opacity: 1; pointer-events: auto; }
+        .lightbox img { max-width: 90%; max-height: 85vh; border-radius: 8px; transform: scale(0.9); transition: transform 0.4s ease; }
+        .lightbox.activo img { transform: scale(1); }
+        .lightbox-cerrar { position: absolute; top: 30px; right: 40px; color: white; font-size: 2.5rem; cursor: pointer; }
+
+        /* --- 4. RAZONES POR LAS QUE TE AMO --- */
+        #razones { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        .cuadrícula-razones {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .tarjeta-razon {
+            padding: 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        .tarjeta-razon:hover {
+            transform: translateY(-10px);
+            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,179,198,0.3));
+            border-color: var(--rosa-intenso);
+        }
+        .tarjeta-razon i {
+            font-size: 2.5rem;
+            color: var(--rojo-elegante);
+            margin-bottom: 15px;
+            display: inline-block;
+            transition: transform 0.4s ease;
+        }
+        .tarjeta-razon:hover i { transform: scale(1.2) rotate(10deg); }
+        .tarjeta-razon h4 { margin-bottom: 10px; color: var(--rojo-oscuro); font-size: 1.2rem; }
+        .tarjeta-razon p { font-size: 0.95rem; line-height: 1.4; color: var(--texto-oscuro); }
+
+        /* --- 5. CARTA DE AMOR --- */
+        #carta { padding: 80px 20px; display: flex; justify-content: center; }
+        .papel-carta {
+            max-width: 700px;
+            width: 100%;
+            background: #fffdf6;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1), inset 0 0 40px rgba(212,175,55,0.1);
+            border-radius: 4px;
+            padding: 50px;
+            border: 1px solid #f0e6cc;
+            position: relative;
+        }
+        .papel-carta::before {
+            content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
+            border: 1px dashed var(--rosa-medio); margin: 10px; width: calc(100% - 22px); height: calc(100% - 22px);
+            pointer-events: none;
+        }
+        .texto-carta {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #3a322d;
+            outline: none;
+            min-height: 200px;
+        }
+        .firma-carta {
+            margin-top: 30px;
+            text-align: right;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--rojo-elegante);
+        }
+
+        /* --- 6. CONTADOR DE TIEMPO DICHOSO --- */
+        #contador { padding: 80px 20px; text-align: center; }
+        .reloj-contenedor {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .bloque-tiempo {
+            padding: 25px;
+            min-width: 140px;
+            border-radius: 20px;
+        }
+        .bloque-tiempo span {
+            display: block;
+        }
+        .numero-tiempo {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--rojo-elegante);
+            font-family: 'Playfair Display', serif;
+        }
+        .etiqueta-tiempo {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            color: var(--rojo-oscuro);
+        }
+
+        /* --- 7. NUESTROS SUEÑOS --- */
+        #suenos { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+        .bloques-suenos {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .tarjeta-sueno {
+            flex: 1 1 300px;
+            overflow: hidden;
+            border-radius: 20px;
+            text-align: center;
+            padding: 0 0 30px 0;
+        }
+        .tarjeta-sueno img {
+            width: 100%; height: 220px; object-fit: cover;
+            border-bottom: 4px solid var(--rosa-medio);
+        }
+        .tarjeta-sueno h3 { margin: 20px 0 10px; color: var(--rojo-elegante); }
+        .tarjeta-sueno p { padding: 0 20px; font-size: 0.95rem; line-height: 1.5; }
+
+        /* --- 8. PLAYLIST ROMÁNTICA --- */
+#playlist {
+    min-height: 30vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 80px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+.contenedor-reproductor {
+    width: 100%;
+    max-width: 600px;
+
+    margin-top: 30px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--sombra-suave);
+}
+
+        /* --- 9. MENSAJES OCULTOS --- */
+        #mensajes-ocultos { padding: 80px 20px; text-align: center; max-width: 800px; margin: 0 auto; }
+        .zona-botones { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; }
+        .btn-sorpresa {
+            padding: 12px 25px; border: 2px solid var(--rojo-elegante); background: transparent;
+            color: var(--rojo-elegante); border-radius: 30px; cursor: pointer; font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-sorpresa:hover { background: var(--rojo-elegante); color: white; transform: scale(1.05); }
+        .alerta-sorpresa {
+            min-height: 80px; padding: 20px; border-radius: 15px; font-style: italic;
+            font-size: 1.2rem; color: var(--rojo-oscuro); display: flex; align-items: center; justify-content: center;
+            opacity: 0; transform: scale(0.9); transition: all 0.4s ease;
+        }
+        .alerta-sorpresa.mostrar { opacity: 1; transform: scale(1); }
+
+        /* --- 10. ÁRBOL DEL AMOR INTERACTIVO --- */
+        #arbol-amor { padding: 80px 20px; text-align: center; max-width: 1000px; margin: 0 auto; }
+        .contenedor-arbol {
+            position: relative; width: 100%; max-width: 600px; height: 500px; margin: 0 auto;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,90 L50,60 Q50,40 40,35 T30,20 M50,55 Q55,45 65,40 T75,25 M50,70 Q45,60 55,50 T50,30" stroke="%238B5A2B" stroke-width="3" fill="none" stroke-linecap="round"/></svg>') no-repeat center bottom/contain;
+        }
+        .hoja-recuerdo {
+            position: absolute; width: 35px; height: 35px; background: var(--rosa-intenso);
+            border-radius: 30px 0 30px 30px; transform: rotate(-45deg); cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .hoja-recuerdo::after { content: '✨'; transform: rotate(45deg); font-size: 0.8rem; color: white; }
+        .hoja-recuerdo:hover { background: var(--rojo-elegante); transform: rotate(-45deg) scale(1.2); }
+        
+        /* Posicionamiento estratégico de hojas en el árbol */
+        .h1 { top: 120px; left: 220px; } .h2 { top: 90px; left: 320px; }
+        .h3 { top: 160px; left: 400px; } .h4 { top: 220px; left: 160px; }
+        .h5 { top: 200px; left: 280px; } .h6 { top: 260px; left: 440px; }
+        .h7 { top: 150px; left: 120px; } .h8 { top: 140px; left: 480px; }
+
+        /* --- 11. SECCIÓN FINAL --- */
+        #final {
+            padding: 100px 20px; text-align: center; position: relative; overflow: hidden;
+        }
+        .bg-final {
+            position: absolute; top:0; left:0; width:100%; height:100%;
+            background: linear-gradient(rgba(255, 229, 236, 0.85), rgba(255, 204, 213, 0.95)),
+                        url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1920') no-repeat center center/cover;
+            z-index: -1;
+        }
+        .contenido-final { max-width: 800px; margin: 0 auto; }
+        .contenido-final h2 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--rojo-elegante); margin-bottom: 20px; }
+        .contenido-final p { font-size: 1.5rem; line-height: 1.6; margin-bottom: 40px; font-weight: 300; }
+
+
+
+
+        .tiempo-juntos{
+            margin-top: 25px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--color-principal);
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width:768px){
+            .tiempo-juntos{
+                font-size: 1.3rem;
+            }
+        }
+
+        /* ==========================================================================
+           4. ADAPTABILIDAD TOTAL (RESPONSIVE)
+           ========================================================================== */
+        @media (max-width: 900px) {
+            .linea-tiempo::before { left: 40px; }
+            .h-evento { width: 100%; padding-left: 80px; padding-right: 20px; }
+            .h-evento.izquierda, .h-evento.derecha { text-align: left; left: 0; }
+            .h-evento::after, .h-evento.derecha::after { left: 24px; right: auto; }
+            .contenido-bienvenida h1 { font-size: 3rem; }
+            .contenido-bienvenida p { font-size: 1.4rem; }
+            .titular-seccion { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 600px) {
+            .papel-carta { padding: 25px; }
+            .numero-tiempo { font-size: 2.4rem; }
+            .bloque-tiempo { min-width: 100px; padding: 15px; }
+            .contenido-final h2 { font-size: 2.8rem; }
+            .contenido-final p { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="capa-particulas"></div>
+    <button class="control-musica" id="btnMusica" onclick="alternarMusica()">
+        <i class="fas fa-music"></i>
+    </button>
+    
+    <audio id="musicaFondo" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <section id="bienvenida" >
+        <div class="bg-bienvenida"></div>
+        <div class="contenido-bienvenida glass-panel">
+            <h1>Feliz Aniversario, Loquita</h1> 
+            <p>Feliz Aniversario Mi Amor ❤️</p>
+            <a href="#historia" class="btn-romantico">Comenzar nuestra historia</a>
+        </div>
+    </section>
+
+    <section id="historia">
+        <h2 class="titular-seccion">Nuestra Historia</h2>
+        <div class="linea-tiempo">
+            
+            <div class="h-evento izquierda">
+                <div class="h-contenido glass-panel">
+                    <i class="fas fa-comments"></i>
+                    <h3>Cómo nos conocimos</h3>
+                    <p>Todo comenzó en una inesperada noche de Vendimia, cuando nuestros caminos se cruzaron. Entre juegos, risas y algo rico para compartir, disfrutamos momentos inolvidables. Incluso nos llevamos aquella famosa jarra del trago. Sin saberlo, esa noche marcaría el inicio de una hermosa historia junto a mi loquita.
+</p>
+                    <img src="img/IMG_20240307_233620.jpg" alt="Cómo nos conocimos">
+                </div>
+            </div>
+
+            <div class="h-evento derecha">
+                <div class="h-contenido glass-panel">
+                    <i class="fas fa-coffee"></i>
+                    <h3>Nuestra primera salida</h3>
+                    <p>Los nervios a flor de piel, risas incontrolables y la certeza absoluta de que no quería separarme de ti jamás.</p>
+                    <img src="img/IMG_20240928_200619.jpg" alt="Primera salida">
+                </div>
+            </div>
+
+            <div class="h-evento izquierda">
+                <div class="h-contenido glass-panel">
+                    <i class="fas fa-plane"></i>
+                    <h3>Nuestro primer viaje</h3>
+                    <p>Descubrir un nuevo lugar de tu mano hizo que entendiera que mi destino favorito del mundo siempre serás tú.</p>
+                    <img src="img/IMG_20240414_144323.jpg" alt="Primer viaje">
+                </div>
+            </div>
+
+            <div class="h-evento derecha">
+                <div class="h-contenido glass-panel">
+                    <i class="fas fa-heart"></i>
+                    <h3>Nuestro Aniversario</h3>
+                    <p>Hoy celebramos cada segundo, cada complicidad y la promesa inquebrantable de seguir construyendo un porvenir juntos.</p>
+                    <img src="img/IMG_20250927_230509.jpg" alt="Aniversario">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="galeria" class="glass-panel" style="margin: 40px auto; border-radius:0;">
+        <h2 class="titular-seccion">Galería de Momentos Mágicos</h2>
+        <div class="malla-masonry">
+            <div class="item-galeria" onclick="abrirLightbox(this)">
+                <img src="img/1720977635303.jpg" alt="Momento 1">
+                <div class="capa-hover"><span>Tu sonrisa favorita</span></div>
+            </div>
+            <div class="item-galeria" onclick="abrirLightbox(this)">
+                <img src="img/IMG_20250418_192628.jpg" alt="Momento 2">
+                <div class="capa-hover"><span>Abrazos infinitos</span></div>
+            </div>
+            <div class="item-galeria" onclick="abrirLightbox(this)">
+                <img src="img/IMG_20250927_230509.jpg" alt="Momento 4">
+                <div class="capa-hover"><span>Amaneceres contigo</span></div>
+            </div>
+            <div class="item-galeria" onclick="abrirLightbox(this)">
+                <img src="img/IMG_20240729_132838.jpg" alt="Momento 5">
+                <div class="capa-hover"><span>Regalitos</span></div>
+            </div>
+            <div class="item-galeria" onclick="abrirLightbox(this)">
+                <img src="img/IMG_20241010_203904.jpg" alt="Momento 6">
+                <div class="capa-hover"><span>Felicidad pura</span></div>
+            </div>
+        </div>
+    </section>
+
+    <div id="miLightbox" class="lightbox">
+        <span class="lightbox-cerrar" onclick="cerrarLightbox()">&times;</span>
+        <img id="imgLightbox" src="" alt="Pantalla Completa">
+    </div>
+
+    <section id="razones">
+        <h2 class="titular-seccion">20 Razones Por Las Que Te Amo</h2>
+        <div class="cuadrícula-razones" id="contenedor-razones">
+            </div>
+    </section>
+
+    <section id="carta">
+        <div class="papel-carta">
+            <h2 class="fuente-romantica" style="color: var(--rojo-elegante); text-align:center; margin-bottom:20px;">Mi Amor Perfecto</h2>
+            <div class="texto-carta" contenteditable="true">
+                Querida Loquita,<br><br>
+              Escribir lo que siento por ti nunca será suficiente para expresar todo lo que guardo en mi corazón. Desde que llegaste a mi vida, encontré en ti un amor sincero, una compañera increíble y la razón por la que cada día deseo ser una mejor versión de mí mismo. Aun cuando hemos enfrentado momentos difíciles, mi amor por ti no ha cambiado; al contrario, ha crecido con cada experiencia compartida.<br><br>
+              Gracias por permanecer a mi lado, por tu paciencia, tu ternura y por seguir creyendo en nosotros. Quiero que sepas que te amo profundamente y que estoy dispuesto a seguir mejorando, aprendiendo y luchando por nuestro futuro. Mi mayor deseo es construir una vida llena de felicidad contigo, tomados de la mano, superando cada obstáculo y disfrutando cada bendición. Eres el amor de mi vida, y prometo nunca dejar de elegirte cada día.
+            </div>
+            <div class="firma-carta">Tu amor eterno</div>
+        </div>
+    </section>
+
+    <section id="contador">
+        <h2 class="titular-seccion">El Tiempo Que Llevamos Siendo Felices</h2>
+
+        <div class="reloj-contenedor">
+            <div class="bloque-tiempo glass-panel">
+                <span class="numero-tiempo" id="dias">00</span>
+                <span class="etiqueta-tiempo">Días</span>
+            </div>
+
+            <div class="bloque-tiempo glass-panel">
+                <span class="numero-tiempo" id="horas">00</span>
+                <span class="etiqueta-tiempo">Horas</span>
+            </div>
+
+            <div class="bloque-tiempo glass-panel">
+                <span class="numero-tiempo" id="minutos">00</span>
+                <span class="etiqueta-tiempo">Minutos</span>
+            </div>
+
+            <div class="bloque-tiempo glass-panel">
+                <span class="numero-tiempo" id="segundos">00</span>
+                <span class="etiqueta-tiempo">Segundos</span>
+            </div>
+        </div>
+
+        <!-- Tiempo en años y meses -->
+        <div id="tiempo-juntos" class="tiempo-juntos">
+            0 años y 0 meses juntos ❤️
+        </div>
+    </section>
+
+    <section id="suenos">
+        <h2 class="titular-seccion">Nuestros Sueños Por Cumplir</h2>
+        <div class="bloques-suenos">
+            <div class="tarjeta-sueno glass-panel">
+                <img src="img/depositphotos_26904009-stock-photo-happy-family-making-the-home.jpg" alt="Formar una familia">
+                <h3>Formar una familia</h3>
+                <p>Ver crecer a nuestros hijos, compartir cada etapa de sus vidas, llenar nuestro hogar de risas, amor y recuerdos que nos acompañen para siempre.</p>
+            </div>
+            <div class="tarjeta-sueno glass-panel">
+                <img src="img/7630189_stock-photo-papercut-of-house-with-family-in-it.jpg"Hogar">
+                <h3>Construir un hogar</h3>
+                <p>Diseñar un espacio propio lleno de risas, complicidad, mascotas inquietas y una calidez que solo nosotros sabemos transmitir.</p>
+            </div>
+            <div class="tarjeta-sueno glass-panel">
+                <img src="img/images.jpg" alt="Futuro">
+                <h3>Crecimiento Mutuo</h3>
+                <p>Apoyarnos incondicionalmente en cada proyecto individual y profesional, celebrando los éxitos del otro como propios.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="playlist">
+        <h2 class="titular-seccion">Nuestra Banda Sonora</h2>
+        <p style="margin-bottom: 20px;">Las canciones que me recuerdan a ti en cada acorde.</p>
+        <div class="contenedor-reproductor">
+            <iframe style="border-radius:12px" src="img/Enrique Iglesias - La Chica De Ayer (Visualizer).mp3" width="100%" height="50px" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section id="mensajes-ocultos">
+        <h2 class="titular-seccion">Mensajes para cuando me extrañes</h2>
+        <p style="margin-bottom: 25px;">Presiona cualquier botón para revelar un pensamiento secreto.</p>
+        <div class="zona-botones">
+            <button class="btn-sorpresa" onclick="revelarMensaje(0)">Botón 1 💌</button>
+            <button class="btn-sorpresa" onclick="revelarMensique(1)">Botón 2 💫</button>
+            <button class="btn-sorpresa" onclick="revelarMensaje(2)">Botón 3 🌸</button>
+            <button class="btn-sorpresa" onclick="revelarMensaje(3)">Botón 4 🔮</button>
+        </div>
+        <div class="alerta-sorpresa glass-panel" id="cajaSorpresa">
+            Haz clic en un botón para desplegar la magia...
+        </div>
+    </section>
+
+    <section id="arbol-amor">
+        <h2 class="titular-seccion">El Árbol de los Recuerdos</h2>
+        <p style="margin-bottom:20px;">Cada hoja resguarda una memoria imborrable. Pulsa sobre ellas.</p>
+        <div class="contenedor-arbol">
+            <div class="hoja-recuerdo h1" onclick="mostrarRecuerdo('Nuestra primera cita en la Vendimia. jajaja. hay la jarrita.')"></div>
+            <div class="hoja-recuerdo h2" onclick="mostrarRecuerdo('Nuestro pasea a la playa carchuaz. Te caiste de la moto')"></div>
+            <div class="hoja-recuerdo h3" onclick="mostrarRecuerdo('Mi primera vez en un concierot en vivo. te pasaste de tragos jajaja.')"></div>
+            <div class="hoja-recuerdo h4" onclick="mostrarRecuerdo('Tu cumpleaños con guittarra. Te veias hermosa')"></div>
+            <div class="hoja-recuerdo h5" onclick="mostrarRecuerdo('Tu ataque de risa incontrolable en tu casa. Tardes muy hermosas.')"></div>
+            <div class="hoja-recuerdo h6" onclick="mostrarRecuerdo('Nuestro paseo a Paracas en la moto. Uff si que comimos bien.')"></div>
+            <div class="hoja-recuerdo h7" onclick="mostrarRecuerdo('Visita a Lima a shanti. Estaba nervioso no sabia si me recibirian bien')"></div>
+            <div class="hoja-recuerdo h8" onclick="mostrarRecuerdo('Leo y su inusual visita a tu cuarto. jajaja no puedo superarlo. Nos vio todo.')"></div>
+        </div>
+    </section>
+
+    <section id="final">
+        <div class="bg-final"></div>
+        <div class="contenido-final glass-panel" style="padding: 40px;">
+            <h2>Para Toda La Vida</h2>
+            <p>"Gracias por compartir tu vida conmigo. Eres lo mejor que me ha pasado ❤️"</p>
+            <button class="btn-romantico" id="btnTeAmo" style="cursor: pointer; font-size:1.2rem;">Te Amo</button>
+        </div>
+    </section>
+
+    <script>
+        /* CONFIGURACIÓN CRÍTICA: Cambia aquí la fecha de tu aniversario */
+        const FECHA_ANIVERSARIO = "2025-01-10T00:00:00"; 
+
+        /* --- CONTROL DE MÚSICA DE FONDO --- */
+        const musica = document.getElementById('musicaFondo');
+        const btnMusica = document.getElementById('btnMusica');
+        
+        function alternarMusica() {
+            if(musica.paused) {
+                musica.play().catch(e => console.log("La reproducción requiere interacción del usuario primero."));
+                btnMusica.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                musica.pause();
+                btnMusica.innerHTML = '<i class="fas fa-music"></i>';
+            }
+        }
+
+        /* --- GENERACIÓN DE RAZONES DE AMOR (20 ELEMENTOS) --- */
+        const razonesTexto = [
+            "Por tu sonrisa contagiosa.", "Por la paz que me transmites.",
+            "Por tu forma de ver el mundo.", "Por tu apoyo incondicional.",
+            "Por tus abrazos sanadores.", "Por tu mirada comprensiva.",
+            "Por cómo cuidas de mí.", "Por nuestras risas compartidas.",
+            "Por tu paciencia infinita.", "Por hacerme mejor persona.",
+            "Por tus detalles inesperados.", "Por tu valentía y fuerza.",
+            "Por la forma en que me das la mano.", "Por tu inteligencia brillante.",
+            "Por ser mi refugio seguro.", "Por tu sentido del humor único.",
+            "Por los planes a futuro juntos.", "Por aceptar mis imperfecciones.",
+            "Por el amor que pones en todo.", "Simplemente por ser tú."
+        ];
+        
+        const contenedorRazones = document.getElementById('contenedor-razones');
+        razonesTexto.forEach((razon, index) => {
+            const card = document.createElement('div');
+            card.className = 'tarjeta-razon glass-panel';
+            card.innerHTML = `
+                <i class="fas fa-heart-notch"></i>
+                <h4>Razón #${index + 1}</h4>
+                <p>${razon}</p>
+            `;
+            contenedorRazones.appendChild(card);
+        });
+
+            /* --- CONTADOR DINÁMICO DE TIEMPO --- */
+            function actualizarContador() {
+                const fechaInicio = new Date(FECHA_ANIVERSARIO);
+                const ahora = new Date();
+
+                const diferencia = ahora - fechaInicio;
+
+                if (diferencia < 0) return;
+
+                // Contador de días, horas, minutos y segundos
+                const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+                document.getElementById('dias').innerText = dias.toString().padStart(2, '0');
+                document.getElementById('horas').innerText = horas.toString().padStart(2, '0');
+                document.getElementById('minutos').innerText = minutos.toString().padStart(2, '0');
+                document.getElementById('segundos').innerText = segundos.toString().padStart(2, '0');
+
+                // Cálculo de años y meses
+                let anios = ahora.getFullYear() - fechaInicio.getFullYear();
+                let meses = ahora.getMonth() - fechaInicio.getMonth();
+
+                if (meses < 0) {
+                    anios--;
+                    meses += 12;
+                }
+
+                if (ahora.getDate() < fechaInicio.getDate()) {
+                    meses--;
+                    if (meses < 0) {
+                        anios--;
+                        meses += 12;
+                    }
+                }
+
+                document.getElementById('tiempo-juntos').innerHTML =
+                    `${anios} año${anios !== 1 ? 's' : ''} y ${meses} mes${meses !== 1 ? 'es' : ''} juntos ❤️`;
+            }
+        setInterval(actualizarContador, 1000);
+        actualizarContador();
+
+        /* --- LIGHTBOX DE LA GALERÍA --- */
+        const lightbox = document.getElementById('miLightbox');
+        const imgLightbox = document.getElementById('imgLightbox');
+
+        function abrirLightbox(elemento) {
+            const srcOriginal = elemento.querySelector('img').src;
+            imgLightbox.src = srcOriginal;
+            lightbox.classList.add('activo');
+        }
+        function cerrarLightbox() {
+            lightbox.classList.remove('activo');
+        }
+
+        /* --- MENSAJES OCULTOS --- */
+        const frasesSorpresa = [
+            "Eres el pensamiento más bonito que ronda por mi mente a todas horas. 🧠✨",
+            "Si volviera a nacer, te buscaría mucho más rápido para amarte por más tiempo. ⏳❤️",
+            "Mi lugar favorito del universo entero es justo entre tus brazos. 🌌🏡",
+            "Me enamoré de ti, de tu alma, de tus imperfecciones y de tu luz entera. 🌟"
+        ];
+        function revelarMensaje(indice) {
+            const caja = document.getElementById('cajaSorpresa');
+            caja.classList.remove('mostrar');
+            setTimeout(() => {
+                caja.innerText = frasesSorpresa[indice];
+                caja.classList.add('mostrar');
+            }, 200);
+        }
+        // Atajo por si hay error de escritura en el onclick HTML
+        function revelarMensique(i){ revelarMensaje(i); }
+
+        /* --- ARBOL INTERACTIVO DE RECUERDOS --- */
+        function mostrarRecuerdo(texto) {
+            const caja = document.getElementById('cajaSorpresa');
+            // Desplazamos la pantalla sutilmente hacia la caja de mensajes para facilitar la lectura
+            document.getElementById('mensajes-ocultos').scrollIntoView({ behavior: 'smooth' });
+            caja.classList.remove('mostrar');
+            setTimeout(() => {
+                caja.innerHTML = `<strong>🌳 Recuerdo Guardado:</strong> ${texto}`;
+                caja.classList.add('mostrar');
+            }, 300);
+        }
+
+        /* --- ANIMACIÓN AL HACER SCROLL (TIMELINE) --- */
+        const eventos = document.querySelectorAll('.h-evento');
+        const observerOptions = { threshold: 0.2 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        eventos.forEach(evento => observer.observe(evento));
+
+        /* --- SISTEMA DE PÉTALOS Y CORAZONES FLOTANTES --- */
+        const contenedorParticulas = document.getElementById('capa-particulas');
+        const tiposParticulas = ['🌸', '❤️', '💖', '✨'];
+
+        function crearParticula() {
+            const elemento = document.createElement('div');
+            elemento.className = 'particula';
+            elemento.innerText = tiposParticulas[Math.floor(Math.random() * tiposParticulas.length)];
+            
+            elemento.style.left = Math.random() * 100 + 'vw';
+            elemento.style.fontSize = Math.random() * (24 - 12) + 12 + 'px';
+            
+            const duracion = Math.random() * (10 - 5) + 5;
+            elemento.style.animationDuration = duracion + 's';
+            
+            contenedorParticulas.appendChild(elemento);
+            setTimeout(() => elemento.remove(), duracion * 1000);
+        }
+        setInterval(crearParticula, 400);
+
+        /* --- EFECTO DE CONFETI Y ESTALLIDO (BOTÓN FINAL) --- */
+        const btnTeAmo = document.getElementById('btnTeAmo');
+        btnTeAmo.addEventListener('click', (e) => {
+            const rect = btnTeAmo.getBoundingClientRect();
+            // Creamos ráfaga de confeti alrededor del botón
+            for (let i = 0; i < 60; i++) {
+                const confeti = document.createElement('div');
+                confeti.className = 'confeti';
+                confeti.innerText = ['❤️','💕','✨','🔥','🌸'][Math.floor(Math.random() * 5)];
+                confeti.style.left = (rect.left + window.scrollX + rect.width / 2) + 'px';
+                confeti.style.top = (rect.top + window.scrollY + rect.height / 2) + 'px';
+                
+                // Vectores aleatorios de explosión
+                const angulo = Math.random() * Math.PI * 2;
+                const velocidad = Math.random() * 180 + 50;
+                confeti.style.setProperty('--x', Math.cos(angulo) * velocidad + 'px');
+                confeti.style.setProperty('--y', Math.sin(angulo) * velocidad + 'px');
+                
+                document.body.appendChild(confeti);
+                setTimeout(() => confeti.remove(), 1000);
+            }
+        });
+    </script>
+</body>
+</html>
+
+```
